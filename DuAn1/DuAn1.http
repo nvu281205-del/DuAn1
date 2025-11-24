@@ -1,0 +1,6 @@
+@DuAn1_HostAddress = http://localhost:5122
+
+GET {{DuAn1_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

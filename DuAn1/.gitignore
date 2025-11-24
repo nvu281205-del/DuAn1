@@ -1,0 +1,35 @@
+﻿## Visual Studio
+.vs/
+*.user
+*.suo
+*.log
+*.ide
+
+## Build
+bin/
+obj/
+out/
+
+## Rider
+.idea/
+
+## NuGet
+*.nupkg
+packages/
+
+## Database / local data
+*.mdf
+*.ldf
+*.sqlite
+*.db
+
+## EF Core Migrations (chỉ push code migration, không push DB)
+# /Migrations  <- push được, nên không ignore
+
+## Configuration
+appsettings.Development.json
+secrets.json
+
+## Others
+*.DS_Store
+*.zip
