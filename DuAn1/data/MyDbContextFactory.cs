@@ -9,14 +9,14 @@ namespace DuAn1.data
     {
         public MyDbContext CreateDbContext(string[] args)
         {
-            // 1. Thử đọc biến môi trường
+           
             var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 
-            // 2. Nếu không có → đọc appsettings.json
+          
             if (string.IsNullOrEmpty(connectionString))
             {
-                var basePath = Directory.GetCurrentDirectory();  // bin/Debug/net10.0
-                var projectPath = Path.Combine(basePath, @"..\..\.."); // trở về folder gốc
+                var basePath = Directory.GetCurrentDirectory();  
+                var projectPath = Path.Combine(basePath, @"..\..\..");
 
                 var config = new ConfigurationBuilder()
                     .SetBasePath(projectPath)

@@ -23,6 +23,9 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapGet("/", () => "API is running...");
+
 app.MapControllers();
 
 app.Run();
+

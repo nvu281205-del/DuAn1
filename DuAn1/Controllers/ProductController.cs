@@ -21,5 +21,33 @@ namespace DuAn1.Controllers
             await _context.SaveChangesAsync();
             return Ok(product);
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var products = await _context.Products.FindAsync(id);
+            return Ok(products);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id,Product product)
+        {
+            var eProduct = await _context.Products.FindAsync(id);
+            if (eProduct != null)
+                return NotFound();
+            eProduct.NameProduct = product.NameProduct;
+            eProduct.Description = product.Description;
+            await _context.SaveChangesAsync();
+            return Ok(eProduct);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id, Product product)
+        { 
+            var dProduct = await _context.Products.FindAsync(id);
+            if (dProduct == null)
+                return NotFound();
+             _context.Remove(dProduct);
+            await _context.SaveChangesAsync();
+            return Ok(dProduct);
+        }
+
     }
 }
