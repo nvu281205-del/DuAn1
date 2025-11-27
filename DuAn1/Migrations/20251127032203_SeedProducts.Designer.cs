@@ -3,6 +3,7 @@ using DuAn1.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAn1.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251127032203_SeedProducts")]
+    partial class SeedProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,30 +68,6 @@ namespace DuAn1.Migrations
                             Id = 4,
                             Description = "Điện thoại gaming mạnh mẽ",
                             NameProduct = "RedMagic 10 Pro"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Điện thoại camera ẩn dưới màn hình",
-                            NameProduct = "Oppo Find X7"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Description = "Điện thoại màn hình tràn viền",
-                            NameProduct = "Vivo Nex 6"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Description = "Điện thoại flagship của Huawei",
-                            NameProduct = "Huawei Mate 60"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Description = "Điện thoại hiệu năng cao giá rẻ",
-                            NameProduct = "Realme GT Neo 6"
                         });
                 });
 #pragma warning restore 612, 618

@@ -2,6 +2,7 @@
 using DuAn1.data;
 using DuAn1.model;
 using Microsoft.EntityFrameworkCore;
+
 namespace DuAn1.Controllers
 {
     [ApiController]
@@ -17,21 +18,36 @@ namespace DuAn1.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Product product)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return Ok(product);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _context.Products.ToListAsync();
+            return Ok(products);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var products = await _context.Products.FindAsync(id);
+            if (products == null)
+            {
+                return NotFound();
+            }
             return Ok(products);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id,Product product)
         {
             var eProduct = await _context.Products.FindAsync(id);
-            if (eProduct != null)
+            if (eProduct == null)
                 return NotFound();
             eProduct.NameProduct = product.NameProduct;
             eProduct.Description = product.Description;
@@ -39,7 +55,7 @@ namespace DuAn1.Controllers
             return Ok(eProduct);
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id, Product product)
+        public async Task<IActionResult> Delete(int id)
         { 
             var dProduct = await _context.Products.FindAsync(id);
             if (dProduct == null)
