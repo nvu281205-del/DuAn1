@@ -3,7 +3,8 @@
     public class Product
     {
         public int Id { get; set; }
-        public String NameProduct { get; set; }
-        public String Description { get; set; }
+        public required string NameProduct { get; set; }
+        public required string Description { get; set; }
+
     }
 }

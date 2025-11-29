@@ -1,7 +1,11 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using DuAn1.data;
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+
+// Lắng nghe trên 0.0.0.0 để Railway truy cập được
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 // Add services to the container.
 
 builder.Services.AddControllers();
